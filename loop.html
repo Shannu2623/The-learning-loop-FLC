@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepMate - Exam Preparation</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header.hero {
+            background: linear-gradient(135deg, #4caf50, #81c784);
+            color: #fff;
+            text-align: center;
+            padding: 80px 0;
+            border-radius: 0 0 50% 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header.hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        header.hero p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        header.hero .cta-button {
+            background: #fff;
+            color: #4caf50;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        header.hero .cta-button:hover {
+            background-color: #81c784;
+            transform: scale(1.1);
+        }
+
+        .navbar {
+            background: #333;
+            color: #fff;
+            padding: 12px 0;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .navbar .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #81c784;
+        }
+
+        .section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .cards, .grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card, .item {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover, .item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button {
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #81c784;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 25px 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        textarea, input[type="number"], input[type="text"], button {
+            padding: 12px;
+            margin: 12px 0;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="text"], input[type="number"] {
+            font-size: 1.1rem;
+        }
+
+        .form-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        ul li {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        ul li:hover {
+            background-color: #e1f5e1;
+            transform: scale(1.03);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header.hero h1 {
+                font-size: 2.5rem;
+            }
+
+            header.hero p {
+                font-size: 1.2rem;
+            }
+
+            .navbar .nav-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .cards, .grid {
+                flex-direction: column;
+            }
+
+            .card, .item {
+                width: 100%;
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>PrepMate</h1>
+            <p>Your Ultimate Exam Preparation Partner</p>
+            <a href="#timetable" class="cta-button">Plan Your Timetable</a>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#tips">Exam Tips</a></li>
+                <li><a href="#techniques">Study Techniques</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#forum">Forum</a></li>
+                <li><a href="#timetable">Timetable</a></li>
+                <li><a href="#progress">Progress</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+
+    <!-- Main Content -->
+    <main>
+        <!-- Exam Tips Section -->
+        <section id="tips" class="section">
+            <div class="container">
+                <h2>Exam Preparation Tips</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>Plan Your Time</h3>
+                        <p>Use a study planner to allocate time for each subject. Stick to a routine for consistency.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Practice and Revise</h3>
+                        <p>Attempt past papers and revise key concepts to build confidence.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Focus on Health</h3>
+                        <p>Maintain a balanced diet and get enough sleep to keep your mind sharp.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Techniques Section -->
+        <section id="techniques" class="section">
+            <div class="container">
+                <h2>Effective Study Techniques</h2>
+                <div class="grid">
+                    <div class="item">
+                        <h3>Pomodoro Method</h3>
+                        <p>Study for 25 minutes, then take a 5-minute break. Repeat for maximum focus.</p>
+                    </div>
+                    <div class="item">
+                        <h3>Chunking</h3>
+                        <p>Divide large topics into smaller, manageable sections for better understanding.</p>
+                    </div>
+                    <div class="item">
+                        <h3>Visualization</h3>
+                        <p>Create charts or diagrams to remember complex information.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Timetable Section -->
+        <section id="timetable" class="section">
+            <div class="container">
+                <h2>Create Your Study Timetable</h2>
+                <div class="form-section">
+                    <form id="timetable-form">
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" placeholder="Enter Subject Name" required>
+                        
+                        <label for="time">Study Time (hours):</label>
+                        <input type="number" id="time" placeholder="Enter Hours" required>
+                        
+                        <button type="submit" class="cta-button">Add to Timetable</button>
+                    </form>
+                    
+                    <h3>Your Study Timetable</h3>
+                    <ul id="timetable-list"></ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Tracker Section -->
+        <section id="progress" class="section">
+            <div class="container">
+                <h2>Track Your Progress</h2>
+                <label for="study-hours">Log Study Hours:</label>
+                <input type="number" id="study-hours" placeholder="Hours Studied" required>
+                <button id="add-progress" class="cta-button">Add Progress</button>
+                <h3>Total Study Hours: <span id="total-hours">0</span></h3>
+            </div>
+        </section>
+
+        <!-- Discussion Forum Section -->
+        <section id="forum" class="section">
+            <div class="container">
+                <h2>Join the Conversation</h2>
+                <textarea id="user-post" placeholder="Share a tip or ask a question..."></textarea>
+                <button id="submit-post" class="cta-button">Post</button>
+                <h3>Recent Posts:</h3>
+                <ul id="posts-list"></ul>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="section">
+            <div class="container">
+                <h2>Resource Library</h2>
+                <ul>
+                    <li><a href="https://example.com/study-guide.pdf" target="_blank">Download Study Guide (PDF)</a></li>
+                    <li><a href="https://example.com/video-tutorials" target="_blank">View Video Tutorials</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 PrepMate. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Timetable Functionality
+        document.getElementById('timetable-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const subjectInput = document.getElementById('subject');
+            const timeInput = document.getElementById('time');
+
+            const subject = subjectInput.value.trim();
+            const time = parseFloat(timeInput.value);
+
+            if (!subject) {
+                alert('Subject name cannot be empty.');
+                return;
+            }
+            if (isNaN(time) || time <= 0) {
+                alert('Please enter a valid number of hours.');
+                return;
+            }
+
+            const timetableList = document.getElementById('timetable-list');
+            const listItem = document.createElement('li');
+            listItem.textContent = `${subject}: ${time} hours`;
+            timetableList.appendChild(listItem);
+
+            subjectInput.value = '';
+            timeInput.value = '';
+        });
+
+        // Progress Tracker
+        let totalHours = 0;
+        document.getElementById('add-progress').addEventListener('click', function () {
+            const hours = parseInt(document.getElementById('study-hours').value, 10);
+            if (!isNaN(hours) && hours > 0) {
+                totalHours += hours;
+                document.getElementById('total-hours').textContent = totalHours;
+                document.getElementById('study-hours').value = '';
+            } else {
+                alert('Please enter a valid number of hours.');
+            }
+        });
+
+        // Forum Functionality
+        document.getElementById('submit-post').addEventListener('click', function () {
+            const postContent = document.getElementById('user-post').value.trim();
+            if (postContent) {
+                const postsList = document.getElementById('posts-list');
+                const postItem = document.createElement('li');
+                postItem.textContent = postContent;
+                postsList.appendChild(postItem);
+                document.getElementById('user-post').value = '';
+            } else {
+                alert('Post content cannot be empty.');
+            }
+        });
+    </script>
+</body>
+</html>
